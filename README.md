@@ -26,10 +26,9 @@ This is service using https://projects.spring.io/spring-boot, using Maven for co
 3. ``GET /offers/{jobTitle}`` - get single offer based on jobTitle
 4. ``GET /offers/{jobTitle}/applications/count`` - get number of applications per offer
 5. ``POST /applications`` - create a new application for offer
-6. ``GET /applications`` - gets all applications.
-7. ``GET /applications/{jobTitle}`` - gets all applications for given jobTitle.
-8. ``GET /applications/{jobTitle}/{emailId}`` - get single application for given jobTitle and emailId.
-9. ``POST /applications/status`` - progress application.
+6. ``GET /applications/{jobTitle}`` - gets all applications for given jobTitle.
+7. ``GET /applications/{jobTitle}/{emailId}`` - get single application for given jobTitle and emailId.
+8. ``POST /applications/status`` - progress application.
 
 # Specifications
 
@@ -182,7 +181,7 @@ Content-Type: application/json
 204 No Content
 ```
 ===============================================================================================================================================
-### 7. Get All applications
+### 7. Get Single application
 
 Gets all received applications for jobTitle
 
@@ -214,31 +213,7 @@ Content-Type: application/json
 204 No Content
 ```
 ===============================================================================================================================================
-### 8. Get Single application 
-
-Gets single received applications for jobTitle
-
-#### Request sample
-GET /applications/{jobTitle}/{emailId} HTTP/1.1
-Content-Type: application/json
-
-#### Success response sample
-
-```
- 	{
-        "jobTitle": "Java Developer",
-        "emailId": "chiragsuthar14@outlook.com",
-        "resumeText": "Java developer with hands on Spring ,Spring boot,Spring Integration and Hibernate",
-        "applicationStatus": "APPLIED"
-    }
-```
-#### Error response sample
-
-```
-204 No Content
-```
-===============================================================================================================================================
-### 9. Progress application
+### 8. Progress application
 
 Every Time if there is a change in application status this endpoint will be called
 
