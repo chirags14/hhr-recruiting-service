@@ -75,13 +75,13 @@ Content-Type: application/json
  {
         "jobTitle": "Java Developer",
         "startDate": "2018-07-22",
-        "jobDescription": "Ideal Canididate should have 2 years of experience in Java/J2EE ,Spring ,Hibernate",
+        "jobDescription": "Ideal Candidate should have 2 years of experience in Java/J2EE ,Spring ,Hibernate",
         "noOfApplications": 0
     },
     {
         "jobTitle": "Senior Java Developer",
         "startDate": "2018-07-22",
-        "jobDescription": "Ideal Canididate should have 10 years of experience in Java/J2EE ,Spring ,Hibernate",
+        "jobDescription": "Ideal Candidate should have 10 years of experience in Java/J2EE ,Spring ,Hibernate",
         "noOfApplications": 0
     }
 ```
@@ -100,7 +100,7 @@ Content-Type: application/json
  	{
         "jobTitle": "Java Developer",
         "startDate": "2018-07-22",
-        "jobDescription": "Ideal Canididate should have 2 years of experience in Java/J2EE ,Spring ,Hibernate",
+        "jobDescription": "Ideal Candidate should have 2 years of experience in Java/J2EE ,Spring ,Hibernate",
         "noOfApplications": 0
     }
 ```
@@ -168,11 +168,18 @@ Content-Type: application/json
 ### Success response sample
 
 ```
- {
+ 	{
         "jobTitle": "Java Developer",
         "emailId": "chiragsuthar14@outlook.com",
         "resumeText": "Java developer with hands on Spring ,Spring boot,Spring Integration and Hibernate",
         "applicationStatus": "APPLIED"
+    }
+    
+    {
+        "jobTitle": "Java Developer",
+        "emailId": "Candidate2@outlook.com",
+        "resumeText": "Java developer ",
+        "applicationStatus": "REJECTED"
     }
 ```
 #### Error response sample
@@ -198,13 +205,6 @@ Content-Type: application/json
         "emailId": "chiragsuthar14@outlook.com",
         "resumeText": "Java developer with hands on Spring ,Spring boot,Spring Integration and Hibernate",
         "applicationStatus": "APPLIED"
-    }
-    
-    {
-        "jobTitle": "Java Developer",
-        "emailId": "Candidate2@outlook.com",
-        "resumeText": "Java developer ",
-        "applicationStatus": "REJECTED"
     }
 ```
 #### Error response sample
