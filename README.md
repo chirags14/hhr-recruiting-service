@@ -63,7 +63,7 @@ Content-Type: application/json
 201 Created
 ```
 ===============================================================================================================================================
-### Get All Offers 
+### 1. Get All Offers 
 
 Gets all created offers
 
@@ -87,7 +87,7 @@ Content-Type: application/json
     }
 ```
 ===============================================================================================================================================
-### Get Offer By Job Title 
+### 2. Get Offer By Job Title 
 
 Get single created offer
 
@@ -106,7 +106,7 @@ Content-Type: application/json
     }
 ```
 ===============================================================================================================================================
-### Get NoOfApplications for offer
+### 3. Get NoOfApplications for offer
 
 Get single created offer
 
@@ -126,7 +126,7 @@ Content-Type: application/json
 # Applications
 Endpoints for this will be used to create track/progress applications
 
-### Create Application
+### 4. Create Application
 
 Every Time a new application created , this endpoint will be called.
 
@@ -146,7 +146,7 @@ Content-Type: application/json
     "resumeText" : "Java developer with hands on Spring ,Spring boot,Spring Integration and Hibernate"
 }
 ```
-#### Success response sample
+#### 5. Success response sample
 
 ```
 201 Created
@@ -158,7 +158,7 @@ Content-Type: application/json
 204 No Content
 ```
 ===============================================================================================================================================
-### Get All application 
+### 6. Get All application 
 
 Gets all received applications for jobTitle
 
@@ -182,7 +182,7 @@ Content-Type: application/json
 204 No Content
 ```
 ===============================================================================================================================================
-### Get All applications
+### 7. Get All applications
 
 Gets all received applications for jobTitle
 
@@ -214,7 +214,7 @@ Content-Type: application/json
 204 No Content
 ```
 ===============================================================================================================================================
-### Get Single application 
+### 8. Get Single application 
 
 Gets single received applications for jobTitle
 
@@ -238,7 +238,7 @@ Content-Type: application/json
 204 No Content
 ```
 ===============================================================================================================================================
-### Progress application
+### 9. Progress application
 
 Every Time if there is a change in application status this endpoint will be called
 
