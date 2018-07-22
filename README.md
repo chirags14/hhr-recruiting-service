@@ -15,6 +15,9 @@ user has to be able to progress the status of an application.
 user has to be able to track the number of applications.
 status change triggers a notification (*)
 
+### Implementation 
+This is service using https://projects.spring.io/spring-boot, using Maven for compiling and building the application.This service uses H2 in memory database for processing offers and applications. Used Spring Data JPA repository for backend operations with H2. For change in any application status this application monitors that using HRRecruitingAppStatusEventListner and log (*) in output.
+
 
 ### List of API's
 
@@ -28,11 +31,11 @@ status change triggers a notification (*)
 8. ``GET /applications/{jobTitle}/{emailId}`` - get single application for given jobTitle and emailId.
 9. ``POST /applications/status`` - progress application.
 
-## Specs
+#Specifications
 
-# Offers
+## Offers
 
-##Create a New Offer
+###Create a New Offer
 
 Every Time a new offer created, this endpoint will be called.
 
@@ -58,17 +61,15 @@ Content-Type: application/json
 201 Created
 ```
 
-##Get All Offers 
+###Get All Offers 
 
 Gets all created offers
-
 
 #### Request sample
 GET /offers HTTP/1.1
 Content-Type: application/json
 
 #### Success response sample
-
 ```
  {
         "jobTitle": "Java Developer",
@@ -84,7 +85,7 @@ Content-Type: application/json
     }
 ```
 
-##Get Offer By Job Title 
+###Get Offer By Job Title 
 
 Get single created offer
 
@@ -103,7 +104,7 @@ Content-Type: application/json
     }
 ```
 
-##Get NoOfApplications for offer
+###Get NoOfApplications for offer
 
 Get single created offer
 
@@ -122,7 +123,7 @@ Content-Type: application/json
 # Applications
 Endpoints for this will be used to create track/progress applications
 
-##Create Application
+###Create Application
 
 Every Time a new application created , this endpoint will be called.
 
@@ -154,16 +155,15 @@ Content-Type: application/json
 204 No Content
 ```
 
-##Get All applciations 
+###Get All application 
 
-Gets all rececived applications for jobTitle
+Gets all received applications for jobTitle
 
-
-#### Request sample
+### Request sample
 GET /applications/{jobTitle} HTTP/1.1
 Content-Type: application/json
 
-#### Success response sample
+### Success response sample
 
 ```
  {
@@ -179,9 +179,9 @@ Content-Type: application/json
 204 No Content
 ```
 
-##Get All applciations 
+###Get All application 
 
-Gets all rececived applications for jobTitle
+Gets all received applications for jobTitle
 
 
 #### Request sample
@@ -211,7 +211,7 @@ Content-Type: application/json
 204 No Content
 ```
 
-##Get Single application 
+###Get Single application 
 
 Gets single received applications for jobTitle
 
@@ -235,7 +235,7 @@ Content-Type: application/json
 204 No Content
 ```
 
-##Progress application  
+###Progress application
 
 Every Time if there is a change in application status this endpoint will be called
 
