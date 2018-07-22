@@ -107,7 +107,7 @@ Content-Type: application/json
 ===============================================================================================================================================
 ### 4. Get NoOfApplications for offer
 
-Get single created offer
+Get no of application received for given jobTitle
 
 #### Request sample
 GET /offers/{jobTitle}/applications/count HTTP/1.1
@@ -157,7 +157,7 @@ Content-Type: application/json
 204 No Content
 ```
 ===============================================================================================================================================
-### 6. Get All application 
+### 6. Get All applications
 
 Gets all received applications for jobTitle
 
@@ -183,11 +183,11 @@ Content-Type: application/json
 ===============================================================================================================================================
 ### 7. Get Single application
 
-Gets all received applications for jobTitle
+Gets Single application based on offer jobTitle and candidate emailId 
 
 
 #### Request sample
-GET /applications/{jobTitle} HTTP/1.1
+GET /applications/{jobTitle}/{emailId} HTTP/1.1
 Content-Type: application/json
 
 #### Success response sample
