@@ -3,6 +3,8 @@ package com.hhr.group.recruiting.model;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
@@ -26,6 +28,7 @@ public class HRRecruitingApplicationDTO {
 	 */
 	@NotNull
 	@NotEmpty
+	@javax.validation.constraints.Email
 	private String emailId;
 	
 	/**

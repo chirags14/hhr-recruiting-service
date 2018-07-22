@@ -261,7 +261,7 @@ Content-Type: application/json
 #### Success response sample
 
 ```
-201 Created
+200 Ok
 ```
 
 #### Error response sample
