@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  *
  */
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Offer {
+public class HRRecruitingOfferDTO {
 	
 	/**
 	 * jobTitle
@@ -45,7 +45,7 @@ public class Offer {
 	/**
 	 * applications
 	 */
-	private List<Application> applications ;
+	private List<HRRecruitingApplicationDTO> applications ;
 
 
 	/**
@@ -93,14 +93,14 @@ public class Offer {
 	/**
 	 * @return the applications
 	 */
-	public final List<Application> getApplications() {
+	public final List<HRRecruitingApplicationDTO> getApplications() {
 		return applications;
 	}
 
 	/**
 	 * @param applications the applications to set
 	 */
-	public final void setApplications(List<Application> applications) {
+	public final void setApplications(List<HRRecruitingApplicationDTO> applications) {
 		this.applications = applications;
 	}
 

@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.hhr.group.recruiting.model.Application;
-import com.hhr.group.recruiting.service.ApplicationService;
+import com.hhr.group.recruiting.model.HRRecruitingApplicationDTO;
+import com.hhr.group.recruiting.service.HRRecruitingApplicationService;
 
 /**
  * @author chirag suthar
@@ -34,18 +34,18 @@ import com.hhr.group.recruiting.service.ApplicationService;
  */
 @RestController
 @ControllerAdvice
-public class ApplicationController extends ResponseEntityExceptionHandler {
+public class HRRecruitingApplicationController extends ResponseEntityExceptionHandler {
 
 	/**
 	 * LOG
 	 */
-	final static Logger LOG = Logger.getLogger(OfferController.class);
+	final static Logger LOG = Logger.getLogger(HRRecruitingOfferController.class);
 
 	/**
 	 * applicationService
 	 */
 	@Autowired
-	private ApplicationService applicationService;
+	private HRRecruitingApplicationService applicationService;
 
 	/**
 	 * @param application
@@ -54,7 +54,7 @@ public class ApplicationController extends ResponseEntityExceptionHandler {
 	 * 		Creates new application for given job title for candidate
 	 */
 	@RequestMapping(value = "/applications", method = RequestMethod.POST)
-	public ResponseEntity<String> createApplication(@Valid @RequestBody Application application) {
+	public ResponseEntity<String> createApplication(@Valid @RequestBody HRRecruitingApplicationDTO application) {
 		LOG.info("Recevied request to add application");
 		if (applicationService.createApplication(application)) {
 			LOG.info("Application created successfully.... ");
@@ -70,11 +70,11 @@ public class ApplicationController extends ResponseEntityExceptionHandler {
 	 * @return List all applications for given job title
 	 */
 	@RequestMapping(value = "/applications/{jobTitle}", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<List<Application>> getApplicationsByJobTitle(
+	public @ResponseBody ResponseEntity<List<HRRecruitingApplicationDTO>> getApplicationsByJobTitle(
 			@PathVariable("jobTitle") String jobTitle) {
 		LOG.debug("Recevied request to get all applications by jobTitle...");
 
-		Optional<List<Application>> applicationOption = applicationService.getAllApplicationsByJobTitle(jobTitle);
+		Optional<List<HRRecruitingApplicationDTO>> applicationOption = applicationService.getAllApplicationsByJobTitle(jobTitle);
 
 		if (applicationOption.isPresent()) {
 			return ResponseEntity.ok(applicationOption.get());
@@ -94,11 +94,11 @@ public class ApplicationController extends ResponseEntityExceptionHandler {
 	 *         emailId
 	 */
 	@RequestMapping(value = "/applications/{jobTitle}/{emailId}", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<Application> getApplicationByApplicationId(
+	public @ResponseBody ResponseEntity<HRRecruitingApplicationDTO> getApplicationByApplicationId(
 			@PathVariable("jobTitle") String jobTitle, @PathVariable("emailId") String emailId) {
 		LOG.debug("Recevied request to application by given jobTitle and emailId...");
 
-		Optional<Application> applicationOption = applicationService.getApplicationByApplicationId(jobTitle, emailId);
+		Optional<HRRecruitingApplicationDTO> applicationOption = applicationService.getApplicationByApplicationId(jobTitle, emailId);
 
 		if (applicationOption.isPresent()) {
 			return ResponseEntity.ok(applicationOption.get());
@@ -115,7 +115,7 @@ public class ApplicationController extends ResponseEntityExceptionHandler {
 	 *         based on application status (APPLIED, INVITED, REJECTED, HIRED)
 	 */
 	@RequestMapping(value = "/applications/status", method = RequestMethod.POST)
-	public ResponseEntity<String> progressApplication(@Valid @RequestBody Application application) {
+	public ResponseEntity<String> progressApplication(@Valid @RequestBody HRRecruitingApplicationDTO application) {
 		LOG.info("Recevied request to update status of a application");
 		if (applicationService.progressApplicationStatus(application)) {
 			LOG.info("Application status has been updated successfully");

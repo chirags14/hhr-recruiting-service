@@ -19,9 +19,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 @EnableJpaAuditing
 @ComponentScan(basePackages= {"com.hhr.group.recruiting"})
-public class HhrRecruitingApiApplication {
+public class HRRecruitingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HhrRecruitingApiApplication.class, args);
+		SpringApplication.run(HRRecruitingApplication.class, args);
 	}
 }

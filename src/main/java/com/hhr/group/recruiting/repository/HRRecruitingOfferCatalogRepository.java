@@ -16,7 +16,7 @@ import com.hhr.group.recruiting.entity.OfferCatalog;
  *
  */
 @Repository
-public interface OfferCatalogRepository extends JpaRepository<OfferCatalog, String> {
+public interface HRRecruitingOfferCatalogRepository extends JpaRepository<OfferCatalog, String> {
 
 
 }

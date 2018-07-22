@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.Table;
 
-import com.hhr.group.recruiting.listner.ApplicationStatusEventListner;
+import com.hhr.group.recruiting.listner.HRRecruitingAppStatusEventListner;
 
 /**
  * @author chirag suthar
@@ -23,7 +23,7 @@ import com.hhr.group.recruiting.listner.ApplicationStatusEventListner;
  */
 @Entity
 @Table(name = "APPLICATION_DETAIL")
-@EntityListeners(ApplicationStatusEventListner.class)
+@EntityListeners(HRRecruitingAppStatusEventListner.class)
 public class ApplicationDetail implements Serializable {
 
 	/**

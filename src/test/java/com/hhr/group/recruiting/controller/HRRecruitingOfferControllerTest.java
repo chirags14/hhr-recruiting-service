@@ -31,8 +31,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.hhr.group.recruiting.model.Application;
-import com.hhr.group.recruiting.model.Offer;
+import com.hhr.group.recruiting.model.HRRecruitingApplicationDTO;
+import com.hhr.group.recruiting.model.HRRecruitingOfferDTO;
 
 /**
  * @author chira
@@ -40,7 +40,7 @@ import com.hhr.group.recruiting.model.Offer;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class OfferControllerTest {
+public class HRRecruitingOfferControllerTest {
 
 	private static final String OFFERS_ENDPOINT = "/offers";
 
@@ -69,14 +69,14 @@ public class OfferControllerTest {
 	}
 	
 	private void postOffers() {
-		Offer offer = new Offer();
+		HRRecruitingOfferDTO offer = new HRRecruitingOfferDTO();
 		offer.setJobTitle("Java Developer");
 		offer.setStartDate(new Date());
 		offer.setJobDescription("Java developer with hands on Spring ,Spring Integration and Hibernate");
 		ResponseEntity<?> response = this.restTemplate.postForEntity(OFFERS_ENDPOINT, offer, String.class);
 		assertThat("Status unexpected", response.getStatusCode(), is(HttpStatus.CREATED));
 
-		Offer offer2 = new Offer();
+		HRRecruitingOfferDTO offer2 = new HRRecruitingOfferDTO();
 		offer2.setJobTitle("Senior Java Developer");
 		offer2.setStartDate(new Date());
 		offer2.setJobDescription(
@@ -84,7 +84,7 @@ public class OfferControllerTest {
 		ResponseEntity<?> response2 = this.restTemplate.postForEntity(OFFERS_ENDPOINT, offer, String.class);
 		assertThat("Status unexpected", response2.getStatusCode(), is(HttpStatus.CREATED));
 		
-		Offer offer3 = new Offer();
+		HRRecruitingOfferDTO offer3 = new HRRecruitingOfferDTO();
 		offer3.setJobTitle("DevOps Engineer");
 		offer3.setStartDate(new Date());
 		offer3.setJobDescription(
@@ -95,7 +95,7 @@ public class OfferControllerTest {
 
 	/**
 	 * Test method for
-	 * {@link com.hhr.group.recruiting.controller.OfferController#createOffer(com.hhr.group.recruiting.model.Offer)}.
+	 * {@link com.hhr.group.recruiting.controller.HRRecruitingOfferController#createOffer(com.hhr.group.recruiting.model.HRRecruitingOfferDTO)}.
 	 * 
 	 * @throws ParseException
 	 */
@@ -106,7 +106,7 @@ public class OfferControllerTest {
 
 	/**
 	 * Test method for
-	 * {@link com.hhr.group.recruiting.controller.OfferController#getAllOffers()}.
+	 * {@link com.hhr.group.recruiting.controller.HRRecruitingOfferController#getAllOffers()}.
 	 * 
 	 * @throws ParseException
 	 */
@@ -122,7 +122,7 @@ public class OfferControllerTest {
 
 	/**
 	 * Test method for
-	 * {@link com.hhr.group.recruiting.controller.OfferController#getOfferByJobTitle(java.lang.String)}.
+	 * {@link com.hhr.group.recruiting.controller.HRRecruitingOfferController#getOfferByJobTitle(java.lang.String)}.
 	 * 
 	 * @throws ParseException
 	 */
@@ -135,8 +135,8 @@ public class OfferControllerTest {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<MultiValueMap<String, Object>>(headers);
-		ResponseEntity<Offer> response = restTemplate.exchange(uri, HttpMethod.GET, entity, Offer.class);
-		Offer offer = response.getBody();
+		ResponseEntity<HRRecruitingOfferDTO> response = restTemplate.exchange(uri, HttpMethod.GET, entity, HRRecruitingOfferDTO.class);
+		HRRecruitingOfferDTO offer = response.getBody();
 		assertNotNull(offer);
 		assertThat("Offer not valid unexpected", offer.getJobTitle(), is("Java Developer"));
 		assertThat("Status unexpected", response.getStatusCode(), is(HttpStatus.OK));

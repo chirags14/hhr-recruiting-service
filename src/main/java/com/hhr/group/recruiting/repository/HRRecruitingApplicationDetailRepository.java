@@ -18,7 +18,7 @@ import com.hhr.group.recruiting.entity.ApplicationId;
  *
  */
 @Repository
-public interface ApplicationDetailRepository extends JpaRepository<ApplicationDetail, ApplicationId> {
+public interface HRRecruitingApplicationDetailRepository extends JpaRepository<ApplicationDetail, ApplicationId> {
 
 	/**
 	 * @param jobTitle

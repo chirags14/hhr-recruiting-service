@@ -17,12 +17,12 @@ import com.hhr.group.recruiting.entity.ApplicationDetail;
  *
  */
 @Component
-public class ApplicationStatusEventListner {
+public class HRRecruitingAppStatusEventListner {
 
 	/**
 	 * LOG
 	 */
-	final static Logger LOG = Logger.getLogger(ApplicationStatusEventListner.class);
+	final static Logger LOG = Logger.getLogger(HRRecruitingAppStatusEventListner.class);
 
 	/**
 	 * @param applicationDetail

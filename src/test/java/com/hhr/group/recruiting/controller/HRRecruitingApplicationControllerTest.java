@@ -29,12 +29,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.hhr.group.recruiting.model.Application;
-import com.hhr.group.recruiting.model.Offer;
+import com.hhr.group.recruiting.model.HRRecruitingApplicationDTO;
+import com.hhr.group.recruiting.model.HRRecruitingOfferDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ApplicationControllerTest {
+public class HRRecruitingApplicationControllerTest {
 
 	private static final String OFFERS_ENDPOINT = "/offers";
 
@@ -60,14 +60,14 @@ public class ApplicationControllerTest {
 	}
 
 	private void postOffers() {
-		Offer offer = new Offer();
+		HRRecruitingOfferDTO offer = new HRRecruitingOfferDTO();
 		offer.setJobTitle("Java Developer");
 		offer.setStartDate(new Date());
 		offer.setJobDescription("Java developer with hands on Spring ,Spring Integration and Hibernate");
 		ResponseEntity<?> response = this.restTemplate.postForEntity(OFFERS_ENDPOINT, offer, String.class);
 		assertThat("Status unexpected", response.getStatusCode(), is(HttpStatus.CREATED));
 
-		Offer offer2 = new Offer();
+		HRRecruitingOfferDTO offer2 = new HRRecruitingOfferDTO();
 		offer2.setJobTitle("Senior Java Developer");
 		offer2.setStartDate(new Date());
 		offer2.setJobDescription(
@@ -75,7 +75,7 @@ public class ApplicationControllerTest {
 		ResponseEntity<?> response2 = this.restTemplate.postForEntity(OFFERS_ENDPOINT, offer, String.class);
 		assertThat("Status unexpected", response2.getStatusCode(), is(HttpStatus.CREATED));
 		
-		Offer offer3 = new Offer();
+		HRRecruitingOfferDTO offer3 = new HRRecruitingOfferDTO();
 		offer3.setJobTitle("Full Stack Developer");
 		offer3.setStartDate(new Date());
 		offer3.setJobDescription(
@@ -87,7 +87,7 @@ public class ApplicationControllerTest {
 	private void postApplications() {
 		// post offer first before applying
 		postOffers();
-		Application application1 = new Application();
+		HRRecruitingApplicationDTO application1 = new HRRecruitingApplicationDTO();
 		application1.setJobTitle("Java Developer");
 		application1.setEmailId("candidate1@gmail.com");
 		application1.setResumeText("Java developer with 6+ years exp in Spring ,Hinernate ,JPA");
@@ -95,7 +95,7 @@ public class ApplicationControllerTest {
 				String.class);
 		assertThat("Status unexpected", response1.getStatusCode(), is(HttpStatus.CREATED));
 
-		Application application2 = new Application();
+		HRRecruitingApplicationDTO application2 = new HRRecruitingApplicationDTO();
 		application2.setJobTitle("Java Developer");
 		application2.setEmailId("candidate2@gmail.com");
 		application2.setResumeText("Java developer with 6+ years exp in Spring ,Hinernate ,JPA");
@@ -121,7 +121,7 @@ public class ApplicationControllerTest {
 		HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<MultiValueMap<String, Object>>(headers);
 		ResponseEntity<?> response = restTemplate.exchange(uri, HttpMethod.GET, entity, Object.class);
 		assertThat("Status unexpected", response.getStatusCode(), is(HttpStatus.OK));
-		List<Application> applications = (List<Application>) response.getBody();
+		List<HRRecruitingApplicationDTO> applications = (List<HRRecruitingApplicationDTO>) response.getBody();
 
 		assertNotNull(applications);
 		assertThat("Applications Count", applications.size(), is(2));
@@ -147,7 +147,7 @@ public class ApplicationControllerTest {
 
 	@Test
 	public void testProgressApplication() {
-		Application application = new Application();
+		HRRecruitingApplicationDTO application = new HRRecruitingApplicationDTO();
 		application.setJobTitle("Java Developer");
 		application.setEmailId("candidate1@gmail.com");
 		application.setApplicationStatus("HIRED");
@@ -165,8 +165,8 @@ public class ApplicationControllerTest {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<MultiValueMap<String, Object>>(headers);
-		ResponseEntity<Application> response2 = restTemplate.exchange(uri, HttpMethod.GET, entity, Application.class);
-		Application application2 = response2.getBody();
+		ResponseEntity<HRRecruitingApplicationDTO> response2 = restTemplate.exchange(uri, HttpMethod.GET, entity, HRRecruitingApplicationDTO.class);
+		HRRecruitingApplicationDTO application2 = response2.getBody();
 		
 		assertThat("Application Status is not changed", application2.getApplicationStatus(), is("HIRED"));
 	}

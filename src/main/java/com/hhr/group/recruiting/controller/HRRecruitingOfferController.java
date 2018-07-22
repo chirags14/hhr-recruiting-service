@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.hhr.group.recruiting.model.Offer;
-import com.hhr.group.recruiting.service.ApplicationService;
-import com.hhr.group.recruiting.service.JobOffferService;
+import com.hhr.group.recruiting.model.HRRecruitingOfferDTO;
+import com.hhr.group.recruiting.service.HRRecruitingApplicationService;
+import com.hhr.group.recruiting.service.HRRecruitingJobOffferService;
 
 /**
  * @author chirag suthar
@@ -35,31 +35,31 @@ import com.hhr.group.recruiting.service.JobOffferService;
  */
 @RestController
 @ControllerAdvice
-public class OfferController extends ResponseEntityExceptionHandler {
+public class HRRecruitingOfferController extends ResponseEntityExceptionHandler {
 
 	/**
 	 * LOG
 	 */
-	final static Logger LOG = Logger.getLogger(OfferController.class);
+	final static Logger LOG = Logger.getLogger(HRRecruitingOfferController.class);
 
 	/**
 	 * jobOffferService
 	 */
 	@Autowired
-	private JobOffferService jobOffferService;
+	private HRRecruitingJobOffferService jobOffferService;
 
 	/**
 	 * applicationService
 	 */
 	@Autowired
-	private ApplicationService applicationService;
+	private HRRecruitingApplicationService applicationService;
 
 	/**
 	 * @param offer
 	 * @return endpoint to create new offer
 	 */
 	@RequestMapping(value = "/offers", method = RequestMethod.POST)
-	public ResponseEntity<String> createOffer(@Valid @RequestBody Offer offer) {
+	public ResponseEntity<String> createOffer(@Valid @RequestBody HRRecruitingOfferDTO offer) {
 		LOG.debug("Recevied request to add offer...");
 		jobOffferService.createOffer(offer);
 		LOG.debug("Offer created successfully...");
@@ -71,9 +71,9 @@ public class OfferController extends ResponseEntityExceptionHandler {
 	 * @return Endpoint to list out all created offers
 	 */
 	@RequestMapping(value = "/offers", method = RequestMethod.GET)
-	public ResponseEntity<List<Offer>> getAllOffers() {
+	public ResponseEntity<List<HRRecruitingOfferDTO>> getAllOffers() {
 		LOG.debug("Recevied request to get all offers...");
-		Optional<List<Offer>> offers = jobOffferService.getAllOffers();
+		Optional<List<HRRecruitingOfferDTO>> offers = jobOffferService.getAllOffers();
 		if (offers.isPresent()) {
 			return ResponseEntity.ok(offers.get());
 		} else {
@@ -88,9 +88,9 @@ public class OfferController extends ResponseEntityExceptionHandler {
 	 * 		Endpoint to fetch single offer based on jobTitle
 	 */
 	@RequestMapping(value = "/offers/{jobTitle}", method = RequestMethod.GET)
-	public ResponseEntity<Offer> getOfferByJobTitle(@PathVariable("jobTitle") String jobTitle) {
+	public ResponseEntity<HRRecruitingOfferDTO> getOfferByJobTitle(@PathVariable("jobTitle") String jobTitle) {
 		LOG.debug("Recevied request to get offer by JobTile...");
-		Optional<Offer> offer = jobOffferService.getOfferByJobTitle(jobTitle);
+		Optional<HRRecruitingOfferDTO> offer = jobOffferService.getOfferByJobTitle(jobTitle);
 		if (offer.isPresent()) {
 			return ResponseEntity.ok(offer.get());
 		} else {
@@ -105,9 +105,9 @@ public class OfferController extends ResponseEntityExceptionHandler {
 	 * 		endpoint to count number of applications based on given jobTitle
 	 */
 	@RequestMapping(value = "/offers/{jobTitle}/applications/count", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<Offer> getApplicationsCount(@PathVariable("jobTitle") String jobTitle) {
+	public @ResponseBody ResponseEntity<HRRecruitingOfferDTO> getApplicationsCount(@PathVariable("jobTitle") String jobTitle) {
 		LOG.debug("Recevied request to get applications count for offer...");
-		Optional<Offer> offer = applicationService.getApplicationCountPerOffer(jobTitle);
+		Optional<HRRecruitingOfferDTO> offer = applicationService.getApplicationCountPerOffer(jobTitle);
 		if (offer.isPresent()) {
 			return ResponseEntity.ok(offer.get());
 		} else {

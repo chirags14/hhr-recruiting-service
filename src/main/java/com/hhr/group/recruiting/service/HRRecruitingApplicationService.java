@@ -14,10 +14,10 @@ import com.hhr.group.recruiting.entity.ApplicationDetail;
 import com.hhr.group.recruiting.entity.ApplicationDetail.ApplicationStatus;
 import com.hhr.group.recruiting.entity.ApplicationId;
 import com.hhr.group.recruiting.entity.OfferCatalog;
-import com.hhr.group.recruiting.model.Application;
-import com.hhr.group.recruiting.model.Offer;
-import com.hhr.group.recruiting.repository.ApplicationDetailRepository;
-import com.hhr.group.recruiting.repository.OfferCatalogRepository;
+import com.hhr.group.recruiting.model.HRRecruitingApplicationDTO;
+import com.hhr.group.recruiting.model.HRRecruitingOfferDTO;
+import com.hhr.group.recruiting.repository.HRRecruitingApplicationDetailRepository;
+import com.hhr.group.recruiting.repository.HRRecruitingOfferCatalogRepository;
 
 /**
  * @author chirag suthar
@@ -26,26 +26,26 @@ import com.hhr.group.recruiting.repository.OfferCatalogRepository;
  *
  */
 @Service
-public class ApplicationService {
+public class HRRecruitingApplicationService {
 
 	/**
 	 * applicationDetailRepository
 	 */
 	@Autowired
-	ApplicationDetailRepository applicationDetailRepository;
+	HRRecruitingApplicationDetailRepository applicationDetailRepository;
 
 	/**
 	 * offerCatalogRepository
 	 */
 	@Autowired
-	OfferCatalogRepository offerCatalogRepository;
+	HRRecruitingOfferCatalogRepository offerCatalogRepository;
 
 	/**
 	 * @param application
 	 * @return
 	 * Creates new application
 	 */
-	public boolean createApplication(Application application) {
+	public boolean createApplication(HRRecruitingApplicationDTO application) {
 		String jobTitle = application.getJobTitle();
 		Optional<OfferCatalog> offerCatalogOption = offerCatalogRepository.findById(jobTitle);
 		// Check first if candidate applying for offer is exists or not.IF not exists
@@ -74,12 +74,12 @@ public class ApplicationService {
 	 * 
 	 * Fetch single application based on applicationId(composite key for application thats jobTitle and emailId)
 	 */
-	public Optional<Application> getApplicationByApplicationId(String jobTitle, String emailId) {
+	public Optional<HRRecruitingApplicationDTO> getApplicationByApplicationId(String jobTitle, String emailId) {
 		ApplicationId applicationId = new ApplicationId();
 		applicationId.setJobTitle(jobTitle);
 		applicationId.setEmailId(emailId);
 		Optional<ApplicationDetail> applicationDetailOption = applicationDetailRepository.findById(applicationId);
-		Application application = new Application();
+		HRRecruitingApplicationDTO application = new HRRecruitingApplicationDTO();
 		;
 		ApplicationDetail applicationDetail = null;
 		if (applicationDetailOption.isPresent()) {
@@ -99,16 +99,16 @@ public class ApplicationService {
 	 * 
 	 * get all applications by job title
 	 */
-	public Optional<List<Application>> getAllApplicationsByJobTitle(String jobTitle) {
-		List<Application> applications = null;
-		Application application = null;
+	public Optional<List<HRRecruitingApplicationDTO>> getAllApplicationsByJobTitle(String jobTitle) {
+		List<HRRecruitingApplicationDTO> applications = null;
+		HRRecruitingApplicationDTO application = null;
 		Optional<List<ApplicationDetail>> applicationDetails = applicationDetailRepository
 				.findAllApplicationsByJobTitle(jobTitle);
 		// if(applicationDetails.size()>0) {
 		if (applicationDetails.isPresent()) {
 			applications = new ArrayList<>();
 			for (ApplicationDetail applicationDetail : applicationDetails.get()) {
-				application = new Application();
+				application = new HRRecruitingApplicationDTO();
 				application.setJobTitle(jobTitle);
 				application.setEmailId(applicationDetail.getApplicationId().getEmailId());
 				application.setResumeText(applicationDetail.getResumeText());
@@ -129,7 +129,7 @@ public class ApplicationService {
 	 */
 	@Transactional
 	@Modifying
-	public boolean progressApplicationStatus(Application application) {
+	public boolean progressApplicationStatus(HRRecruitingApplicationDTO application) {
 		// validate application status which is requested to change against
 		// accepted type (APPLIED, INVITED, REJECTED, HIRED)
 		boolean isUpdated = false;
@@ -155,8 +155,8 @@ public class ApplicationService {
 	 * 
 	 * get total number of application count per Offer
 	 */
-	public Optional<Offer> getApplicationCountPerOffer(String jobTitle) {
-		Offer offer = new Offer();
+	public Optional<HRRecruitingOfferDTO> getApplicationCountPerOffer(String jobTitle) {
+		HRRecruitingOfferDTO offer = new HRRecruitingOfferDTO();
 		offer.setNoOfApplications(applicationDetailRepository.getApplicationCountPerjobTitle(jobTitle));
 		return Optional.of(offer);
 	}
