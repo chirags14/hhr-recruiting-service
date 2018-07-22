@@ -31,11 +31,13 @@ This is service using https://projects.spring.io/spring-boot, using Maven for co
 8. ``GET /applications/{jobTitle}/{emailId}`` - get single application for given jobTitle and emailId.
 9. ``POST /applications/status`` - progress application.
 
-#Specifications
+# Specifications
 
+
+*********************************************************************************************
 ## Offers
 
-###Create a New Offer
+### Create a New Offer
 
 Every Time a new offer created, this endpoint will be called.
 
@@ -60,8 +62,8 @@ Content-Type: application/json
 ```
 201 Created
 ```
-
-###Get All Offers 
+===============================================================================================================================================
+### Get All Offers 
 
 Gets all created offers
 
@@ -84,8 +86,8 @@ Content-Type: application/json
         "noOfApplications": 0
     }
 ```
-
-###Get Offer By Job Title 
+===============================================================================================================================================
+### Get Offer By Job Title 
 
 Get single created offer
 
@@ -103,8 +105,8 @@ Content-Type: application/json
         "noOfApplications": 0
     }
 ```
-
-###Get NoOfApplications for offer
+===============================================================================================================================================
+### Get NoOfApplications for offer
 
 Get single created offer
 
@@ -120,10 +122,11 @@ Content-Type: application/json
 }
 ```
 
+*************************************************************************************************
 # Applications
 Endpoints for this will be used to create track/progress applications
 
-###Create Application
+### Create Application
 
 Every Time a new application created , this endpoint will be called.
 
@@ -154,8 +157,8 @@ Content-Type: application/json
 ```
 204 No Content
 ```
-
-###Get All application 
+===============================================================================================================================================
+### Get All application 
 
 Gets all received applications for jobTitle
 
@@ -178,8 +181,8 @@ Content-Type: application/json
 ```
 204 No Content
 ```
-
-###Get All application 
+===============================================================================================================================================
+### Get All applications
 
 Gets all received applications for jobTitle
 
@@ -210,8 +213,8 @@ Content-Type: application/json
 ```
 204 No Content
 ```
-
-###Get Single application 
+===============================================================================================================================================
+### Get Single application 
 
 Gets single received applications for jobTitle
 
@@ -234,8 +237,8 @@ Content-Type: application/json
 ```
 204 No Content
 ```
-
-###Progress application
+===============================================================================================================================================
+### Progress application
 
 Every Time if there is a change in application status this endpoint will be called
 
@@ -266,6 +269,7 @@ Content-Type: application/json
 ```
 304 Not modified
 ```
+===============================================================================================================================================
 	    
 ### Build
 You can build using:
@@ -277,7 +281,7 @@ You can run using:
 
   $ mvn spring-boot:run
 
-The REST endpoints from the command line:
-
-    $ curl http://localhost:8080/statistics
+### Junit
+ You can also run junit test case using :
+ $ mvn test 
 
