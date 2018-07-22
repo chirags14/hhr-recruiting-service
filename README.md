@@ -37,7 +37,7 @@ This is service using https://projects.spring.io/spring-boot, using Maven for co
 *********************************************************************************************
 ## Offers
 
-### Create a New Offer
+### 1. Create a New Offer
 
 Every Time a new offer created, this endpoint will be called.
 
@@ -63,7 +63,7 @@ Content-Type: application/json
 201 Created
 ```
 ===============================================================================================================================================
-### 1. Get All Offers 
+### 2. Get All Offers 
 
 Gets all created offers
 
@@ -87,7 +87,7 @@ Content-Type: application/json
     }
 ```
 ===============================================================================================================================================
-### 2. Get Offer By Job Title 
+### 3. Get Offer By Job Title 
 
 Get single created offer
 
@@ -106,7 +106,7 @@ Content-Type: application/json
     }
 ```
 ===============================================================================================================================================
-### 3. Get NoOfApplications for offer
+### 4. Get NoOfApplications for offer
 
 Get single created offer
 
@@ -126,7 +126,7 @@ Content-Type: application/json
 # Applications
 Endpoints for this will be used to create track/progress applications
 
-### 4. Create Application
+### 5. Create Application
 
 Every Time a new application created , this endpoint will be called.
 
@@ -146,7 +146,7 @@ Content-Type: application/json
     "resumeText" : "Java developer with hands on Spring ,Spring boot,Spring Integration and Hibernate"
 }
 ```
-#### 5. Success response sample
+#### Success response sample
 
 ```
 201 Created
