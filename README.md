@@ -2,7 +2,7 @@
 
 ### Introduction
 
-This is a very simple recruitment service, which allows HR to post job offers, fetch single or all posted offer ,track number of applications per offer , progress status of application through various stages of status such as (APPLIED, INVITED, REJECTED, HIRED).
+This is a very simple recruitment service, which allows HR to post job offers, fetch single or all posted offers ,track number of applications per offer , progress status of application through various stages of status such as (APPLIED, INVITED, REJECTED, HIRED).
 
 This service also allows candidates to apply for particular job offer based on job title.
 
