@@ -3,7 +3,6 @@ package com.hhr.group.recruiting.controller;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 
 import java.net.URI;
 import java.util.Arrays;
@@ -127,23 +126,6 @@ public class HRRecruitingApplicationControllerTest {
 		assertThat("Applications Count", applications.size(), is(2));
 	}
 
-	/*@Test
-	public void testGetApplicationByApplicationId() {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("jobTitle", "Full Stack Developer");
-		params.put("emailId", "candidate5@gmail.com");
-		URI uri = UriComponentsBuilder.fromUriString(APPLICATION_BY_APPLICATION_ID_ENDPOINT).buildAndExpand(params)
-				.toUri();
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<MultiValueMap<String, Object>>(headers);
-		ResponseEntity<Application> response = restTemplate.exchange(uri, HttpMethod.GET, entity, Application.class);
-		Application application = response.getBody();
-		assertNotNull(application);
-		assertThat("Status unexpected", response.getStatusCode(), is(HttpStatus.OK));
-		assertThat("Application is not matched", application.getEmailId(), is("candidate5@gmail.com"));
-	}*/
 
 	@Test
 	public void testProgressApplication() {

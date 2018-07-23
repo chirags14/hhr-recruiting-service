@@ -143,34 +143,4 @@ public class HRRecruitingOfferControllerTest {
 
 	}
 
-	/**
-	 * Test method for
-	 * {@link com.hhr.group.recruiting.controller.OfferController#getApplicationsCount(java.lang.String)}.
-	 * @throws ParseException 
-	 */
-	/*@Test
-	public void testGetApplicationsCount() throws ParseException {
-		//create application on job offer
-		Application application1 = new Application();
-		application1.setJobTitle("DevOps Engineer");
-		application1.setEmailId("candidate@gmail.com");
-		application1.setResumeText("Java developer with 6+ years exp in Spring ,Hinernate ,JPA");
-		ResponseEntity<?> response1 = this.restTemplate.postForEntity(APPLICATIONS_ENDPOINT, application1,
-				String.class);
-		assertThat("Status unexpected", response1.getStatusCode(), is(HttpStatus.CREATED));
-		
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("jobTitle", "DevOps Engineer");
-		URI uri = UriComponentsBuilder.fromUriString(OFFER_APPLICATIONS_COUNT_ENDPOINT).buildAndExpand(params).toUri();
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<MultiValueMap<String, Object>>(headers);
-		ResponseEntity<Offer> responseCount = restTemplate.exchange(uri, HttpMethod.GET, entity, Offer.class);
-		Offer offerCount = responseCount.getBody();
-		assertNotNull(offerCount);
-		assertThat("no of application count not mathced", offerCount.getNoOfApplications(), is(1));
-		assertThat("Status unexpected", responseCount.getStatusCode(), is(HttpStatus.OK));
-	}*/
-
 }
